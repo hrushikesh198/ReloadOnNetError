@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "ReloadOnNetError",
+  "version": "1.0",
+  "description": "Chrome extension to reload an webpage on any network error.",
+  "action": {
+    "default_popup": "popup.html"    
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "notifications",
+    "scripting",
+    "tabs",
+    "tabGroups",
+    "webNavigation",
+    "offscreen"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "tunes/*"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
