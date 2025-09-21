@@ -12,6 +12,7 @@
   "permissions": [
     "notifications",
     "scripting",
+    "storage",
     "tabs",
     "tabGroups",
     "webNavigation",
