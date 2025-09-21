@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+    "target": "es2022",
+    "module": "esnext",        // Extensions use ESM now (MV3)
+    "checkJs": true,           // Type-checking for JS files
+    "baseUrl": ".",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "lib": ["dom", "es2022"],  // DOM + latest JS features
+    "types": ["chrome"]        // Pulls in Chrome API typings
+  },
+  "include": ["*.js"]
+}
