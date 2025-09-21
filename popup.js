@@ -1,5 +1,14 @@
 const statusEl = document.getElementById('reload-status');
 const btn = document.getElementById('activate-reload');
+const disableAudioCheckbox = document.getElementById('disable-audio-notification');
+
+chrome.storage.sync.get('disableAudio', (data) => {
+  disableAudioCheckbox.checked = data.disableAudio;
+});
+
+disableAudioCheckbox.addEventListener('change', (event) => {
+  chrome.storage.sync.set({ disableAudio: event.target.checked });
+});
 
 let autoReloadEnabled = false;
 
