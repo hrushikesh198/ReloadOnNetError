@@ -2,12 +2,14 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if (msg.action === "showLoadedAlert") {
     try {
       chrome.storage.sync.get('disableAudio', (data) => {
+        let msg = "Page loaded successfully."
         if (!data.disableAudio) {
           // Delegate audio to offscreen document so it keeps playing during blocking alerts
+          msg = msg + ' Click OK to stop the notification sound.'
           chrome.runtime.sendMessage({ type: 'offscreenAudio', action: 'start' });
         }
         setTimeout(() => {
-          alert("Page loaded. Click OK to stop the notification sound.");
+          alert(msg);
           if (!data.disableAudio) {
             chrome.runtime.sendMessage({ type: 'offscreenAudio', action: 'stop' });
           }
